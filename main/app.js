@@ -17,9 +17,6 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-server.listen(3000, function(){
-  console.log('Socket IO server listening on port 80')
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/dataReceiver', dataReceiverRouter);
-app.use('/dataSender', dataSenderRouter);
+app.use('/dataSender', dataSenderRouter); 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
