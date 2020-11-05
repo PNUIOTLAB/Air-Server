@@ -4,9 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
+var indexRouter = require('./routes/index'); // router객체를 반환
+var usersRouter = require('./routes/users'); // router객체를 반환
+var roomsRouter = require('./routes/roomdata'); // router객체를 반환
 var app = express();
 
 // view engine setup
@@ -19,10 +19,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
-// catch 404 and forward to error handler
+
+
+app.use('/', indexRouter); //        /로 오는 모든 요청은 indexRouter 객체에 인가
+app.use('/users', usersRouter);//    /users로 오는 모든 요청은 usersRouter 객체에 인가
+app.use('/rooms',roomsRouter); //    /rooms로 오는 모든 요청은 roomsRouter 객체에 인가
+
+
+
+
+// catch 404 and forward to error handler -> 예는 라우팅에 대한 에러 처리인데, 모든 라우팅 처리 맨 마지막에 와야함 ㅇㅇ
 app.use(function(req, res, next) {
   next(createError(404));
 });
