@@ -1,4 +1,4 @@
-var express = require('express');
+/*var express = require('express');
 var router = express.Router();
 var udp = require('dgram');
 
@@ -38,4 +38,4 @@ client.send([data1,data2],2222,'localhost',function(error){
   }
 });
 
-module.exports = router;
+module.exports = router;*/
