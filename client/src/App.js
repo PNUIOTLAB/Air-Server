@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import Show from './Show';
+import Graph from './GraphMDB';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         </header>
       </div>
       <Show />
+      <Graph />
     </div>
   );
 }
