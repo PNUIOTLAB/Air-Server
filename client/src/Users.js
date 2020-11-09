@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import proxy from './setProxy'
 
 function Users() {
-  const [users, setUsers] = useState(null);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -18,6 +17,7 @@ function Users() {
         const response = await axios.get(
           'http://localhost:5000/api'
         );
+        console.log(response.data)
         setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
       } catch (e) {
         setError(e);
@@ -31,11 +31,14 @@ function Users() {
   if (loading) return <div>로딩중..</div>;
   if (error) return <div>에러가 발생했습니다</div>;
   if (!users) return null;
-  return(
-    <div>
-    id={users.humidity}\n
-    image={users.time}
-    </div> );
+  return (
+    <ul>
+      {users.map(user => (
+        <li key={user.temperature}>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 export default Users;
