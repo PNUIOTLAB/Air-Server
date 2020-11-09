@@ -1,3 +1,4 @@
+//필요없는 라우트임
 var express = require('express');
 var router = express.Router();
 
