@@ -2,7 +2,30 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function Users() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(
+    {
+      co2: 0,
+      device1: false,
+      device2: false,
+      device3: false,
+      device4: false,
+      device5: false,
+      device6: false,
+      finedust: 60,
+      fire: false,
+      huminity: 35.13,
+      room: 101,
+      temperature: 25.44,
+      time: "2020-11-08T15:06:14.000Z",
+      ufinedust: 40
+    });
+    /*const onToggle = id => {
+      setUsers(
+        users.map(user =>
+          user.id === id ? { ...user, active: !user.active } : user
+        )
+      );
+    };*/
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -15,10 +38,12 @@ function Users() {
         // loading 상태를 true 로 바꿉니다.
         setLoading(true);
         const response = await axios.get(
-          'http://localhost:5000/api'
+          'http://192.168.0.55:5000/room/101'
         );
-        console.log(response.data)
-        setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
+        console.log(users);
+        console.log(response.data);
+        //setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
+        console.log(users)
       } catch (e) {
         setError(e);
       }

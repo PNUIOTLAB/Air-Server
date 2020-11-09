@@ -1,73 +1,44 @@
-import React, { useRef, useState } from 'react';
-import UserList from './Users';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-function App() {
-  const [inputs, setInputs] = useState({
-    username: '',
-    email: ''
-  });
-  const { username, email } = inputs;
-  const onChange = e => {
-    const { name, value } = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value
-    });
-  };
-  const [users, setUsers] = useState([
-    {
-      id: 1,
-      username: 'velopert',
-      email: 'public.velopert@gmail.com',
-      active: true
-    },
-    {
-      id: 2,
-      username: 'tester',
-      email: 'tester@example.com',
-      active: false
-    },
-    {
-      id: 3,
-      username: 'liz',
-      email: 'liz@example.com',
-      active: false
+function Users() {
+  const [users, setUsers] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchUsers = async () => {
+    try {
+      // 요청이 시작 할 때에는 error 와 users 를 초기화하고
+      setError(null);
+      setUsers(null);
+      // loading 상태를 true 로 바꿉니다.
+      setLoading(true);
+      const response = await axios.get(
+        'http://192.168.0.55:5000/room/102'
+      );
+      console.log(typeof(response.data.temperature));
+      setUsers(response.data); // 데이터는 response.data 안에 들어있습니다.
+    } catch (e) {
+      setError(e);
     }
-  ]);
-
-  const nextId = useRef(4);
-  const onCreate = () => {
-    const user = {
-      id: nextId.current,
-      username,
-      email
-    };
-    setUsers(users.concat(user));
-
-    setInputs({
-      username: '',
-      email: ''
-    });
-    nextId.current += 1;
+    setLoading(false);
   };
 
-  const onRemove = id => {
-    // user.id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
-    // = user.id 가 id 인 것을 제거함
-    setUsers(users.filter(user => user.id !== id));
-  };
-  const onToggle = id => {
-    setUsers(
-      users.map(user =>
-        user.id === id ? { ...user, active: !user.active } : user
-      )
-    );
-  };
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  if (loading) return <div>로딩중..</div>;
+  if (error) return <div>에러가 발생했습니다</div>;
+  if (!users) return null;
   return (
     <>
-      <UserList users={users} onRemove={onRemove} onToggle={onToggle} />
+      <ul>
+      
+      </ul>
+  
     </>
   );
 }
 
-export default App;
+export default Users;
