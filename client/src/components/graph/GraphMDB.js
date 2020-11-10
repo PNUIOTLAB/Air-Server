@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Line} from 'react-chartjs-2';
 import {MDBContainer} from 'mdbreact';
-import {Data} from '../SampleData';
+import {Data} from '../../SampleData';
 
 function ChartsPage(){
     const [data, setData] = useState({

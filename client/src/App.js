@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Menu from './Menu';
+import Menu from './container/Menu';
 import { Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
