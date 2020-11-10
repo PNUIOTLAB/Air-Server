@@ -1,28 +1,31 @@
+import logo from './logo.svg';
 import './App.css';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Button from '@material-ui/core/Button';
-import Show from './Show';
-import Graph from './components/GraphMDB';
+import Menu from './Menu';
+import { Container } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    height: 140,
+    width: 100,
+  },
+  control: {
+    padding: theme.spacing(2),
+  },
+}));
 
 function App() {
+  const classes = useStyles();
+
   return (
-    <div>
-      <div className="App">
-        <header className="App-header">
-          <p>
-            Welcomes
-          </p>
-          <p
-            className="App-link"
-            rel="noopener noreferrer"
-          >
-            Smart Air
-          </p>
-        </header>
-      </div>
-      <Show />
-      <Graph />
+    <div className="App">
+      <Grid container className={classes.root} spacing={3}>
+        <Menu />
+      </Grid>
     </div>
   );
 }
