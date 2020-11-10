@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import Show from './Show';
-import Graph from './GraphMDB';
+import Graph from './components/GraphMDB';
 
 function App() {
   return (
