@@ -1,5 +1,4 @@
 import React, {useState, useRef} from 'react';
-import Putdata from './Putdata';
 
 function Data({data}){
     return(
@@ -28,7 +27,7 @@ function Data({data}){
             <p>
                 기계3: {data.device3}
             </p>
-            <Putdata />
+
         </div>
     );
 }

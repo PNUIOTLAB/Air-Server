@@ -7,12 +7,11 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Show from '../components/Show';
+import Show from '../components/information/Show';
 import Graph from '../components/graph/GraphMDB';
 import '../App.css';
 import Container from '@material-ui/core/Container';
 import Devicelist from '../components/Actuating/Devicelist';
-import Putdata from '../components/Putdata';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -71,9 +70,6 @@ export default function VerticalTabs() {
     <div className={classes.root}>
         <Grid container className={classes.root} spacing={8}>
           <Grid item xs={12}>
-            <header className="App-header">
-                Smart Air
-            </header>
           </Grid>
           <Grid item xs={2.5}>
               <Container fixed>
@@ -98,7 +94,7 @@ export default function VerticalTabs() {
                   <Show />
                 </Grid>
                 <Grid item xs={4}>
-                  <Putdata />
+                  
                 </Grid>
                 <Grid item xs={9}>
                   <Devicelist />

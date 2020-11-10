@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Menu from './container/Menu';
+import Appbar from './container/Appbar';
 import { Container } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -23,8 +24,8 @@ function App() {
 
   return (
     <div className="App">
+      <Appbar position="static"/>
       <Grid container className={classes.root} spacing={3}>
-        <Menu />
       </Grid>
     </div>
   );
