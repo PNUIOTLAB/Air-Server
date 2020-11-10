@@ -7,12 +7,12 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Show from './Show';
-import Graph from './GraphMDB';
-import './App.css';
+import Show from '../components/Show';
+import Graph from '../components/GraphMDB';
+import '../App.css';
 import Container from '@material-ui/core/Container';
-import Devicelist from './Devicelist';
-import Putdata from './Putdata';
+import Devicelist from '../components/Devicelist';
+import Putdata from '../components/Putdata';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
