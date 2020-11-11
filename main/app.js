@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-app.use('/', indexRouter); //        /로 오는 모든 요청은 indexRouter 객체에 인가
+app.use('/index', indexRouter); //        /로 오는 모든 요청은 indexRouter 객체에 인가
 app.use('/users', usersRouter);//    /users로 오는 모든 요청은 usersRouter 객체에 인가
 app.use('/devices',deviceRouter)//   /devices로 오는 모든 요청은 roomsRouter 객체에 인가
 app.use('/room',roomRouter)//        /room으로 오는 모든 요청은 roomRouter 객체에 인가
