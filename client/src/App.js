@@ -10,6 +10,7 @@ import useRequest from './hook/useRequest';
 import DeviceCritical from './components/Actuating/DeviceCritical';
 import Information from './components/information/Information';
 import Paper from '@material-ui/core/Paper';
+import ChartsPage from './components/graph/GraphMDB'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +43,9 @@ function App() {
       {/* <Grid container direction="column" justify="center" alignItems="center" >
       </Container>  
       </Grid> */}
+        
       </Container>
+      <ChartsPage/>
     </div>
   );
 }
