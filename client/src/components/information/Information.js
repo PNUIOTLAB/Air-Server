@@ -59,22 +59,22 @@ export default function CustomizedTimeline() {
             <Timeline >
                 
                     <TimelineItem>
-                        <Grid item xs={3}>
+                        
                             <TimelineOppositeContent>
                                 <Typography variant="body2" color="textSecondary">
                                     온도
                                 </Typography>
                             </TimelineOppositeContent>
-                        </Grid>
-                        <Grid item xs={3}>
+                        
+                        
                             <TimelineSeparator>
                                 <TimelineDot>
                                     <FastfoodIcon />
                                 </TimelineDot>
                                 <TimelineConnector className={classes.secondaryTail} />
                             </TimelineSeparator>
-                        </Grid>
-                        <Grid item xs={6}>
+                        
+                       
                             <TimelineContent>
                                 <Paper elevation={3} className={classes.paper}>
                                     <Typography variant="h6" component="h1">
@@ -82,26 +82,26 @@ export default function CustomizedTimeline() {
                                     </Typography>
                                 </Paper>
                             </TimelineContent>
-                        </Grid>
+                        
                     </TimelineItem>
                 
                     <TimelineItem>
-                        <Grid item xs={3}>
+                        
                             <TimelineOppositeContent>
                                 <Typography variant="body2" color="textSecondary">
                                     습도
                                 </Typography>
                             </TimelineOppositeContent>
-                        </Grid>
-                        <Grid item xs={3}>
+                        
+                        
                             <TimelineSeparator>
                                 <TimelineDot color="primary">
                                     <Cloud />
                                 </TimelineDot>
                                 <TimelineConnector className={classes.secondaryTail} />
                             </TimelineSeparator>
-                        </Grid>
-                        <Grid item xs={6}>
+                        
+                        
                             <TimelineContent>
                                 <Paper elevation={3} className={classes.paper}>
                                     <Typography variant="h6" component="h1">
@@ -109,26 +109,26 @@ export default function CustomizedTimeline() {
                                     </Typography>
                                 </Paper>
                             </TimelineContent>
-                        </Grid>
+                        
                     </TimelineItem>
                 
                     <TimelineItem>
-                        <Grid item xs={3}>
+                        
                             <TimelineOppositeContent>
                                 <Typography variant="body2" color="textSecondary">
                                     미세먼지
                                 </Typography>
                             </TimelineOppositeContent>
-                        </Grid>
-                        <Grid item xs={3}>
+                        
+                        
                             <TimelineSeparator>
                                 <TimelineDot color="primary" variant="outlined">
                                     <HotelIcon />
                                 </TimelineDot>
                                 <TimelineConnector className={classes.secondaryTail} />
                             </TimelineSeparator>
-                        </Grid>
-                        <Grid item xs={6}>
+                        
+                        
                             <TimelineContent>
                                 <Paper elevation={3} className={classes.paper}>
                                     <Typography variant="h6" component="h1">
@@ -136,26 +136,24 @@ export default function CustomizedTimeline() {
                                     </Typography>
                                 </Paper>
                             </TimelineContent>
-                        </Grid>
+                        
                     </TimelineItem>
                 
                     <TimelineItem>
-                        <Grid item xs={3}>
+                        
                             <TimelineOppositeContent>
                                 <Typography variant="body2" color="textSecondary">
                                     초미세먼지
                                 </Typography>
                             </TimelineOppositeContent>
-                        </Grid>
-                        <Grid item xs={3}>
+                        
                             <TimelineSeparator>
                                 <TimelineDot color="secondary">
                                     <RepeatIcon />
                                 </TimelineDot>
                                 <TimelineConnector className={classes.secondaryTail} />
                             </TimelineSeparator>
-                        </Grid>
-                        <Grid item xs={6}>
+                        
                             <TimelineContent>
                                 <Paper elevation={3} className={classes.paper}>
                                     <Typography variant="h6" component="h1">
@@ -163,26 +161,24 @@ export default function CustomizedTimeline() {
                                     </Typography>
                                 </Paper>
                             </TimelineContent>
-                        </Grid>
+                        
                     </TimelineItem>
                 
                     <TimelineItem>
-                        <Grid item xs={3}>
+                        
                             <TimelineOppositeContent>
                                 <Typography variant="body2" color="textSecondary">
                                     가스
                                 </Typography>
                             </TimelineOppositeContent>
-                        </Grid>
-                        <Grid item xs={3}>
+                        
                             <TimelineSeparator>
                                 <TimelineDot>
                                     <FastfoodIcon />
                                 </TimelineDot>
                                 <TimelineConnector className={classes.secondaryTail} />
                             </TimelineSeparator>
-                        </Grid>
-                        <Grid item xs={6}>
+                        
                             <TimelineContent>
                                 <Paper elevation={3} className={classes.paper}>
                                     <Typography variant="h6" component="h1">
@@ -190,9 +186,10 @@ export default function CustomizedTimeline() {
                                     </Typography>
                                 </Paper>
                             </TimelineContent>
-                        </Grid>
+                        
                     </TimelineItem>
                
             </Timeline>
+
     );
 }
