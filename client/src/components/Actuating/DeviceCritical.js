@@ -37,7 +37,7 @@ const CriticalPoint = (event, newValue) => {
   setValue(newValue);*/
   console.log(newValue);
   console.log(typeof(newValue));
-  axios.post('http://192.168.0.55:5000/devices', newValue)
+  axios.post('http://192.168.0.55:5000/devices',{'0': newValue})
   .then(function(response){
     console.log(response);
   })
