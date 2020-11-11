@@ -7,14 +7,18 @@ import Grid from '@material-ui/core/Grid';
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import useRequest from './hook/useRequest';
+import DeviceCritical from './components/Actuating/DeviceCritical';
+import Information from './components/information/Information';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   paper: {
-    height: 140,
-    width: 100,
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
   },
   control: {
     padding: theme.spacing(2),
@@ -28,18 +32,17 @@ function App() {
     'get','http://192.168.0.55:5000/room/101',function(){console.log("complete")}
   );
   
-  // useEffect(()=>{
-  //   console.log("In app : ");
-  //   setTemp(Data.temperature);
-  // },[Data])
-  
   const {temperature, huminity} = Data===null? {temperature : 0, huminity : 0}:Data
-
-  // const { title, body } = response.data;
   
   return (
-    <div>
-      {Data === null ? <h1>널입니다.</h1> : <h1>{temperature} {huminity}</h1>}
+    <div className={classes.root}>
+      <Container maxWidth="xs">
+        <Information/>
+        <DeviceCritical/>
+      {/* <Grid container direction="column" justify="center" alignItems="center" >
+      </Container>  
+      </Grid> */}
+      </Container>
     </div>
   );
 }
