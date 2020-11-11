@@ -19,7 +19,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
+function Device({device, onToggle}){
+  const classes = useStyles();
+}
 
 function ValueLabelComponent(props) {
   const { children, open, value } = props;

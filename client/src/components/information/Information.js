@@ -17,6 +17,8 @@ import Cloud from '@material-ui/icons/Cloud';
 import axios from "axios"
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
+import DevicesIcon from '@material-ui/icons/Devices';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -26,10 +28,19 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.secondary.main,
     },
     root: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
-        display: 'flex',
-        height: 224,
+      flexGrow: 0,
+      backgroundColor: theme.palette.background.paper,
+      display: 'flex',
+      height: 224,
+    },
+    tabs: {
+      borderRight: `1px solid ${theme.palette.divider}`,
+    },
+    margin: {
+      margin: theme.spacing(1)
+    },
+    extendedIcon: {
+      marginRight: theme.spacing(1)
     },
 }));
 
@@ -41,15 +52,42 @@ export default function CustomizedTimeline() {
     const [finedust, setFinedust] = useState(0);
     const [ufinedust, setUfinedust] = useState(0);
     const [gas, setGas] = useState(0);
+    const [device1, setDevice1] = useState(0); // on off를 나타낼 0 or 1
+    const [device2, setDevice2] = useState(0);
+    const [device3, setDevice3] = useState(0);
+    const [device4, setDevice4] = useState(0);
+    const [device5, setDevice5] = useState(0);
+    const [device6, setDevice6] = useState(0);
+
+    const ManualControl = (event, newValue) => {
+        /*const [value, setValue] = React.useState(30);
+        setValue(newValue);*/
+        console.log(newValue);
+        console.log(typeof(newValue));
+        axios.post('http://192.168.0.55:5000/devices',{'0': newValue})
+        .then(function(response){
+          console.log(response);
+        })
+        .catch(function(err){
+          console.log(err);
+        })
+      }
 
     useEffect(() => {
         const interval = setInterval(() => {
             axios.get('http://192.168.0.55:5000/room/102').then(res => {
+                console.log(res);
                 setTemperature(res.data.temperature);
                 setHuminity(res.data.huminity);
                 setFinedust(res.data.finedust);
                 setUfinedust(res.data.ufinedust);
                 setGas(res.data.co2);
+                setDevice1(res.data.device1); // device1 ? on : off 
+                setDevice2(res.data.device2);
+                setDevice3(res.data.device3);
+                setDevice4(res.data.device3);
+                setDevice5(res.data.device3);
+                setDevice6(res.data.device3);
             });
         }, 5000);
         return() =>clearInterval(interval);
@@ -192,7 +230,15 @@ export default function CustomizedTimeline() {
                             </TimelineContent>
                         </Grid>
                     </TimelineItem>
-               
+                    <div>
+            <IconButton aria-label="favorite">
+
+                <DevicesIcon 
+                    fontSize="large"
+                    variant="contained"
+                 />
+            </IconButton>
+                    </div>
             </Timeline>
     );
 }
