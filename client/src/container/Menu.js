@@ -12,6 +12,7 @@ import Graph from '../components/graph/GraphMDB';
 import '../App.css';
 import Container from '@material-ui/core/Container';
 import Devicelist from '../components/Actuating/Devicelist';
+import CustomizedSlider from '../components/Actuating/DeviceCritical';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -98,6 +99,9 @@ export default function VerticalTabs() {
                 </Grid>
                 <Grid item xs={9}>
                   <Devicelist />
+                </Grid>
+                <Grid item xs={8}>
+                  <CustomizedSlider />
                 </Grid>
                 <Grid item xs={10}>
                   <Graph />

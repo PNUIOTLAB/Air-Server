@@ -27,7 +27,6 @@ function Data({data}){
             <p>
                 기계3: {data.device3}
             </p>
-
         </div>
     );
 }
