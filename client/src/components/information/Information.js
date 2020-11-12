@@ -17,6 +17,8 @@ import Cloud from '@material-ui/icons/Cloud';
 import axios from "axios"
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
+import DevicesIcon from '@material-ui/icons/Devices';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -41,6 +43,13 @@ export default function CustomizedTimeline() {
     const [finedust, setFinedust] = useState(0);
     const [ufinedust, setUfinedust] = useState(0);
     const [gas, setGas] = useState(0);
+    const [device1, setDevice1] = useState(false);
+    const [device2, setDevice2] = useState(false);
+    const [device3, setDevice3] = useState(false);
+    const [device4, setDevice4] = useState(false);
+    const [device5, setDevice5] = useState(false);
+    const [device6, setDevice6] = useState(false);
+
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -50,12 +59,140 @@ export default function CustomizedTimeline() {
                 setFinedust(res.data.finedust);
                 setUfinedust(res.data.ufinedust);
                 setGas(res.data.co2);
+                setDevice1(res.data.device1);
+                setDevice2(res.data.device2);
+                setDevice3(res.data.device3);
+                setDevice4(res.data.device4);
+                setDevice5(res.data.device5);
+                setDevice6(res.data.device6);
             });
         }, 5000);
         return() =>clearInterval(interval);
-    }, [temperature, huminity, finedust, ufinedust, gas]);
+    }, [temperature, huminity, finedust, ufinedust, gas, device1, device2, device3, device4, device5, device6]);
   
+    const onToggle1 = () => {
+        setDevice1(!device1);
+        axios.post('http://192.168.0.55:5000/devices',
+        {device1: device1},
+        {device2: null},
+        {device3: null},
+        {device4: null},
+        {device5: null},
+        {device6: null},
+        ).then(function(response){
+            console.log(response);
+        });
+    };
+    const onToggle2 = () => {
+        setDevice2(!device2);
+        axios.post('http://192.168.0.55:5000/devices',
+        {device1: null},
+        {device2: device2},
+        {device3: null},
+        {device4: null},
+        {device5: null},
+        {device6: null},
+        ).then(function(response){
+            console.log(response);
+        });
+    };
+    const onToggle3 = () => {
+        setDevice3(!device3);
+        axios.post('http://192.168.0.55:5000/devices',
+        {device1: null},
+        {device2: null},
+        {device3: device3},
+        {device4: null},
+        {device5: null},
+        {device6: null},
+        ).then(function(response){
+            console.log(response);
+        });
+    };
+    const onToggle4 = () => {
+        setDevice4(!device4);
+        axios.post('http://192.168.0.55:5000/devices',
+        {device1: null},
+        {device2: null},
+        {device3: null},
+        {device4: device4},
+        {device5: null},
+        {device6: null},
+        ).then(function(response){
+            console.log(response);
+        });
+    };
+    const onToggle5 = () => {
+        setDevice5(!device5);
+        axios.post('http://192.168.0.55:5000/devices',
+        {device1: null},
+        {device2: null},
+        {device3: null},
+        {device4: null},
+        {device5: device5},
+        {device6: null},
+        ).then(function(response){
+            console.log(response);
+        });
+    };
+    const onToggle6 = () => {
+        setDevice6(!device6);
+        axios.post('http://192.168.0.55:5000/devices',
+        {device1: null},
+        {device2: null},
+        {device3: null},
+        {device4: null},
+        {device5: null},
+        {device6: device6},
+        ).then(function(response){
+            console.log(response);
+        });
+    };
+
     return (
+        <div>
+            <IconButton aria-label="favorite"
+                className={classes.margin}
+                onClick={() => onToggle1()}
+                color={device1 ? "secondary" : "default"}
+                >
+                <DevicesIcon fontSize="large" />
+            </IconButton>
+            <IconButton aria-label="favorite"
+                className={classes.margin}
+                onClick={() => onToggle2()}
+                color={device2 ? "secondary" : "default"}
+                >
+                <DevicesIcon fontSize="large" />
+            </IconButton>
+            <IconButton aria-label="favorite"
+                className={classes.margin}
+                onClick={() => onToggle3()}
+                color={device3 ? "secondary" : "default"}
+                >
+                <DevicesIcon fontSize="large" />
+            </IconButton>
+            <IconButton aria-label="favorite"
+                className={classes.margin}
+                onClick={() => onToggle4()}
+                color={device4 ? "secondary" : "default"}
+                >
+                <DevicesIcon fontSize="large" />
+            </IconButton>
+            <IconButton aria-label="favorite"
+                className={classes.margin}
+                onClick={() => onToggle5()}
+                color={device5 ? "secondary" : "default"}
+                >
+                <DevicesIcon fontSize="large" />
+            </IconButton>
+            <IconButton aria-label="favorite"
+                className={classes.margin}
+                onClick={() => onToggle6()}
+                color={device6 ? "secondary" : "default"}
+                >
+                <DevicesIcon fontSize="large" />
+            </IconButton>
             <Timeline >
                 
                     <TimelineItem>
@@ -190,6 +327,6 @@ export default function CustomizedTimeline() {
                     </TimelineItem>
                
             </Timeline>
-
+        </div>
     );
 }
