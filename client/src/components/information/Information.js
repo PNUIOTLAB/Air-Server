@@ -71,82 +71,100 @@ export default function CustomizedTimeline() {
     }, [temperature, huminity, finedust, ufinedust, gas, device1, device2, device3, device4, device5, device6]);
   
     const onToggle1 = () => {
-        setDevice1(!device1);
-        axios.post('http://192.168.0.55:5000/devices',
-        {device1: device1},
-        {device2: null},
-        {device3: null},
-        {device4: null},
-        {device5: null},
-        {device6: null},
+        
+        axios.post('http://192.168.0.55:5000/devices',{
+            '0': !device1,
+            '1': null,
+            '2': null,
+            '3': null,
+            '4': null,
+            '5': null,
+            '6': 103
+        }
         ).then(function(response){
             console.log(response);
         });
+        setDevice1(!device1);
     };
     const onToggle2 = () => {
-        setDevice2(!device2);
-        axios.post('http://192.168.0.55:5000/devices',
-        {device1: null},
-        {device2: device2},
-        {device3: null},
-        {device4: null},
-        {device5: null},
-        {device6: null},
+        
+        axios.post('http://192.168.0.55:5000/devices',{
+            '0': null,
+            '1': !device2,
+            '2': null,
+            '3': null,
+            '4': null,
+            '5': null,
+            '6': 103
+        }
         ).then(function(response){
             console.log(response);
         });
+        setDevice2(!device2);
     };
     const onToggle3 = () => {
-        setDevice3(!device3);
-        axios.post('http://192.168.0.55:5000/devices',
-        {device1: null},
-        {device2: null},
-        {device3: device3},
-        {device4: null},
-        {device5: null},
-        {device6: null},
+        
+        axios.post('http://192.168.0.55:5000/devices',{
+            '0': null,
+            '1': null,
+            '2': !device3,
+            '3': null,
+            '4': null,
+            '5': null,
+            '6': 103
+        }
         ).then(function(response){
             console.log(response);
         });
+        setDevice3(!device3);
     };
     const onToggle4 = () => {
-        setDevice4(!device4);
-        axios.post('http://192.168.0.55:5000/devices',
-        {device1: null},
-        {device2: null},
-        {device3: null},
-        {device4: device4},
-        {device5: null},
-        {device6: null},
+        
+        axios.post('http://192.168.0.55:5000/devices',{
+            '0': null,
+            '1': null,
+            '2': null,
+            '3': !device4,
+            '4': null,
+            '5': null,
+            '6': 103
+        }
         ).then(function(response){
             console.log(response);
         });
+        setDevice4(!device4);
     };
     const onToggle5 = () => {
-        setDevice5(!device5);
-        axios.post('http://192.168.0.55:5000/devices',
-        {device1: null},
-        {device2: null},
-        {device3: null},
-        {device4: null},
-        {device5: device5},
-        {device6: null},
+        
+        axios.post('http://192.168.0.55:5000/devices',{
+            '0': null,
+            '1': null,
+            '2': null,
+            '3': null,
+            '4': !device5,
+            '5': null,
+            '6': 103
+        }
         ).then(function(response){
             console.log(response);
         });
+        setDevice5(!device5);
     };
     const onToggle6 = () => {
-        setDevice6(!device6);
-        axios.post('http://192.168.0.55:5000/devices',
-        {device1: null},
-        {device2: null},
-        {device3: null},
-        {device4: null},
-        {device5: null},
-        {device6: device6},
+        
+        axios.post('http://192.168.0.55:5000/devices',{
+            '0': null,
+            '1': null,
+            '2': null,
+            '3': null,
+            '4': null,
+            '5': !device6,
+            '6': 103
+        }
         ).then(function(response){
             console.log(response);
         });
+        setDevice6(!device6);
     };
 
     return (
