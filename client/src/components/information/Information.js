@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import {makeStyles, createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineItem from '@material-ui/lab/TimelineItem';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
@@ -7,9 +7,6 @@ import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
-import FastfoodIcon from '@material-ui/icons/Fastfood';
-import LaptopMacIcon from '@material-ui/icons/LaptopMac';
-import HotelIcon from '@material-ui/icons/Hotel';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -19,6 +16,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import DevicesIcon from '@material-ui/icons/Devices';
+import TempImg from './image/TemperatureImg.svg';
+import DustImg from './image/Dust.svg';
+import GasImg from './image/Gas.png';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -34,6 +34,27 @@ const useStyles = makeStyles((theme) => ({
         height: 224,
     },
 }));
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#11cb5f'
+        },
+        secondary: {
+            main: '#aa00ff'
+        },
+        error: {
+            main: '#e53935'
+        },
+        text: {
+            primary: '#1de9b6',
+            secondary: '#00e676',
+            disabled: '#ff6f00',
+            hint: '#673ab7',
+            myTextColor: '#fdd835'
+        }
+    }
+})
 
 export default function CustomizedTimeline() {
     const classes = useStyles();
@@ -169,51 +190,59 @@ export default function CustomizedTimeline() {
 
     return (
         <div>
-            <IconButton aria-label="favorite"
-                className={classes.margin}
-                onClick={() => onToggle1()}
-                color={device1 ? "secondary" : "default"}
-                >
-                <DevicesIcon fontSize="large" />
-            </IconButton>
-            <IconButton aria-label="favorite"
-                className={classes.margin}
-                onClick={() => onToggle2()}
-                color={device2 ? "secondary" : "default"}
-                >
-                <DevicesIcon fontSize="large" />
-            </IconButton>
-            <IconButton aria-label="favorite"
-                className={classes.margin}
-                onClick={() => onToggle3()}
-                color={device3 ? "secondary" : "default"}
-                >
-                <DevicesIcon fontSize="large" />
-            </IconButton>
-            <IconButton aria-label="favorite"
-                className={classes.margin}
-                onClick={() => onToggle4()}
-                color={device4 ? "secondary" : "default"}
-                >
-                <DevicesIcon fontSize="large" />
-            </IconButton>
-            <IconButton aria-label="favorite"
-                className={classes.margin}
-                onClick={() => onToggle5()}
-                color={device5 ? "secondary" : "default"}
-                >
-                <DevicesIcon fontSize="large" />
-            </IconButton>
-            <IconButton aria-label="favorite"
-                className={classes.margin}
-                onClick={() => onToggle6()}
-                color={device6 ? "secondary" : "default"}
-                >
-                <DevicesIcon fontSize="large" />
-            </IconButton>
+            <Grid container className={classes.root} spacing={3}>
+                <Grid item xs={10}>
+                <IconButton aria-label="favorite"
+                    className={classes.margin}
+                    onClick={() => onToggle1()}
+                    color={device1 ? "secondary" : "default"}
+                    >
+                    <DevicesIcon fontSize="large" />
+                </IconButton>
+                <IconButton aria-label="favorite"
+                    className={classes.margin}
+                    onClick={() => onToggle2()}
+                    color={device2 ? "secondary" : "default"}
+                    >
+                    <DevicesIcon fontSize="large" />
+                </IconButton>
+                </Grid>
+                <Grid item xs={10}>
+                <IconButton aria-label="favorite"
+                    className={classes.margin}
+                    onClick={() => onToggle3()}
+                    color={device3 ? "secondary" : "default"}
+                    >
+                    <DevicesIcon fontSize="large" />
+                </IconButton>
+                <IconButton aria-label="favorite"
+                    className={classes.margin}
+                    onClick={() => onToggle4()}
+                    color={device4 ? "secondary" : "default"}
+                    >
+                    <DevicesIcon fontSize="large" />
+                </IconButton>
+                </Grid>
+                <Grid item xs={10}>
+                <IconButton aria-label="favorite"
+                    className={classes.margin}
+                    onClick={() => onToggle5()}
+                    color={device5 ? "secondary" : "default"}
+                    >
+                    <DevicesIcon fontSize="large" />
+                </IconButton>
+                <IconButton aria-label="favorite"
+                    className={classes.margin}
+                    onClick={() => onToggle6()}
+                    color={device6 ? "secondary" : "default"}
+                    >
+                    <DevicesIcon fontSize="large" />
+                </IconButton>
+                </Grid>
+            </Grid>
             <Timeline >
                 
-                    <TimelineItem>
+                    <TimelineItem theme={theme}>
                         
                             <TimelineOppositeContent>
                                 <Typography variant="body2" color="textSecondary">
@@ -223,8 +252,8 @@ export default function CustomizedTimeline() {
                         
                         
                             <TimelineSeparator>
-                                <TimelineDot>
-                                    <FastfoodIcon />
+                                <TimelineDot color="secondary" variant="outlined">
+                                    <img src={TempImg} width='25' height='25' />
                                 </TimelineDot>
                                 <TimelineConnector className={classes.secondaryTail} />
                             </TimelineSeparator>
@@ -277,8 +306,8 @@ export default function CustomizedTimeline() {
                         
                         
                             <TimelineSeparator>
-                                <TimelineDot color="primary" variant="outlined">
-                                    <HotelIcon />
+                                <TimelineDot color="secondary" variant="outlined">
+                                    <img src={DustImg} width='25' height='25' />
                                 </TimelineDot>
                                 <TimelineConnector className={classes.secondaryTail} />
                             </TimelineSeparator>
@@ -303,7 +332,7 @@ export default function CustomizedTimeline() {
                             </TimelineOppositeContent>
                         
                             <TimelineSeparator>
-                                <TimelineDot color="secondary">
+                                <TimelineDot color="primary">
                                     <RepeatIcon />
                                 </TimelineDot>
                                 <TimelineConnector className={classes.secondaryTail} />
@@ -328,8 +357,8 @@ export default function CustomizedTimeline() {
                             </TimelineOppositeContent>
                         
                             <TimelineSeparator>
-                                <TimelineDot>
-                                    <FastfoodIcon />
+                                <TimelineDot color="secondary">
+                                    <img src={GasImg} width='25' height='25' />
                                 </TimelineDot>
                                 <TimelineConnector className={classes.secondaryTail} />
                             </TimelineSeparator>
