@@ -19,6 +19,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import HomeIcon from '@material-ui/icons/Home';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import CustomizedTimeline from '../components/information/Information';
 
 const drawerWidth = 240;
 
@@ -149,6 +150,7 @@ export default function Header() {
         })}
       >
         <div className={classes.drawerHeader} />
+           <CustomizedTimeline />
         {/* 여기에 다른 것들을 넣는다 */}
       </main>
     </div>
