@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles} from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -67,12 +67,23 @@ const PrettoSlider = withStyles({
 })(Slider);
 
 
-const CriticalTemperature = (event, newValue) => {
+
+
+  
+
+
+export default function CustomizedSlider() {
+  const classes = useStyles();
+  const [temperature, setTemperature] = useState(25);
+  const [huminity, setHuminity] = useState(40);
+
+  const CriticalTemperature = (event, newValue) => {
   /*const [value, setValue] = React.useState(30);
   setValue(newValue);*/
   console.log(newValue);
   console.log(typeof(newValue));
-  axios.post('http://192.168.0.55:5000/devices',{'0': newValue}) // 온도를 바꾸면 실행되면서 전달
+  setTemperature(newValue);
+  axios.post('http://192.168.0.55:5000/devices',{'0': newValue, '1': 0}) // 온도를 바꾸면 실행되면서 전달
   .then(function(response){
     console.log(response);
   })
@@ -86,7 +97,8 @@ const CriticalHumidity = (event, newValue) => {
     setValue(newValue);*/
     console.log(newValue);
     console.log(typeof(newValue));
-    axios.post('http://192.168.0.55:5000/devices',{'1': newValue}) // 습도를 바꾸면 실행되면서 전달
+    setHuminity(newValue);
+    axios.post('http://192.168.0.55:5000/devices',{'0': 0,'1': newValue}) // 습도를 바꾸면 실행되면서 전달
     .then(function(response){
       console.log(response);
     })
@@ -95,23 +107,19 @@ const CriticalHumidity = (event, newValue) => {
     })
   }
 
-  
-
-
-export default function CustomizedSlider() {
-  const classes = useStyles();
-
   return (
     <div className={classes.root}>
       
       <Typography gutterBottom>온도</Typography>
-      <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} 
+      <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={temperature} 
       onChangeCommitted={CriticalTemperature} min={15} max={35}/>
       <Typography gutterBottom>습도</Typography>
-      <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} 
+      <PrettoSlider valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={huminity} 
       onChangeCommitted={CriticalHumidity} min={20} max={60}/>
     </div>
   );
+
+  
 }
 
 

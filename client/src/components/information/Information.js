@@ -251,7 +251,7 @@ export default function CustomizedTimeline() {
         Open alert dialog 안쓰는거
     </Button>*/}
       <Dialog
-        open={fire} // 이것만 포함시키면 화재 경보는 Fire가 0이 들어올때까지 절대 안꺼짐. open={fire}
+        open={!fire} // 이것만 포함시키면 화재 경보는 Fire가 0이 들어올때까지 절대 안꺼짐. open={fire}
         onClose={handleClose} //이걸 포함시키면 화재 경보가 꺼지긴 하는데 신호를 받으면 다시 켜짐.
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
@@ -259,7 +259,8 @@ export default function CustomizedTimeline() {
       >
         <DialogTitle id="alert-dialog-title"> &nbsp;&nbsp;&nbsp;&nbsp; <FireWarning 
              color="secondary"
-             fontSize="Large" />  {"This system detected the Fire"} <FireWarning 
+             fontSize="Large"
+             backgroundColor= "theme.palette.background.paper" />  {"This system detected the Fire"} <FireWarning 
              color="secondary"
              fontSize="Large" /></DialogTitle>
         <DialogContent>
