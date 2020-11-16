@@ -12,7 +12,6 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Cloud from '@material-ui/icons/Cloud';
 import axios from "axios"
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import DevicesIcon from '@material-ui/icons/Devices';
@@ -70,7 +69,8 @@ export default function CustomizedTimeline() {
     const [device4, setDevice4] = useState(false);
     const [device5, setDevice5] = useState(false);
     const [device6, setDevice6] = useState(false);
-
+    const [temp_hope, setTemp_hope] = useState(15);
+    const [hum_hope, setHum_hope] = useState(40);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -86,6 +86,8 @@ export default function CustomizedTimeline() {
                 setDevice4(res.data.device4);
                 setDevice5(res.data.device5);
                 setDevice6(res.data.device6);
+                setTemp_hope(res.data.temp_hope);
+                setHum_hope(res.data.hum_hope);
             });
         }, 5000);
         return() =>clearInterval(interval);
@@ -262,7 +264,7 @@ export default function CustomizedTimeline() {
                             <TimelineContent>
                                 <Paper elevation={3} className={classes.paper}>
                                     <Typography variant="h6" component="h1">
-                                        {temperature}
+                                        {temperature} / {temp_hope}
                                     </Typography>
                                 </Paper>
                             </TimelineContent>
@@ -289,7 +291,7 @@ export default function CustomizedTimeline() {
                             <TimelineContent>
                                 <Paper elevation={3} className={classes.paper}>
                                     <Typography variant="h6" component="h1">
-                                        {huminity}
+                                        {huminity} / {hum_hope}
                                     </Typography>
                                 </Paper>
                             </TimelineContent>
