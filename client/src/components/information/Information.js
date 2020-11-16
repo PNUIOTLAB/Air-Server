@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import {makeStyles, createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
 import Timeline from '@material-ui/lab/Timeline';
 import TimelineItem from '@material-ui/lab/TimelineItem';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
@@ -7,15 +7,11 @@ import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
-import FastfoodIcon from '@material-ui/icons/Fastfood';
-import LaptopMacIcon from '@material-ui/icons/LaptopMac';
-import HotelIcon from '@material-ui/icons/Hotel';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Cloud from '@material-ui/icons/Cloud';
 import axios from "axios"
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import DevicesIcon from '@material-ui/icons/Devices';
@@ -27,6 +23,9 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import WarningIcon from '@material-ui/icons/Warning';
 import 'fontsource-roboto';
+import TempImg from './image/TemperatureImg.svg';
+import DustImg from './image/Dust.svg';
+import GasImg from './image/Gas.png';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -65,6 +64,26 @@ function FireWarning(props) {           // 화재 경보 아이콘
   }
 
 
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#11cb5f'
+        },
+        secondary: {
+            main: '#aa00ff'
+        },
+        error: {
+            main: '#e53935'
+        },
+        text: {
+            primary: '#1de9b6',
+            secondary: '#00e676',
+            disabled: '#ff6f00',
+            hint: '#673ab7',
+            myTextColor: '#fdd835'
+        }
+    }
+})
 
 export default function CustomizedTimeline() {
     const classes = useStyles();
@@ -75,13 +94,15 @@ export default function CustomizedTimeline() {
     const [finedust, setFinedust] = useState(0);
     const [ufinedust, setUfinedust] = useState(0);
     const [gas, setGas] = useState(0);
-    const [device1, setDevice1] = useState(null); // on off를 나타낼 0 or 1
-    const [device2, setDevice2] = useState(null);
-    const [device3, setDevice3] = useState(null);
-    const [device4, setDevice4] = useState(null);
-    const [device5, setDevice5] = useState(null);
-    const [device6, setDevice6] = useState(null);
     const [fire, setFire] = useState(null);
+    const [device1, setDevice1] = useState(false);
+    const [device2, setDevice2] = useState(false);
+    const [device3, setDevice3] = useState(false);
+    const [device4, setDevice4] = useState(false);
+    const [device5, setDevice5] = useState(false);
+    const [device6, setDevice6] = useState(false);
+    const [temp_hope, setTemp_hope] = useState(25);
+    const [hum_hope, setHum_hope] = useState(40);
 
     const handleClickOpen = () => {
         console.log(fire);
@@ -101,6 +122,9 @@ export default function CustomizedTimeline() {
                 setFinedust(res.data.finedust);
                 setUfinedust(res.data.ufinedust);
                 setGas(res.data.co2);
+
+
+
                 setDevice1(res.data.device1); // device1 ? on : off 
                 setDevice2(res.data.device2);
                 setDevice3(res.data.device3);
@@ -108,15 +132,165 @@ export default function CustomizedTimeline() {
                 setDevice5(res.data.device3);
                 setDevice6(res.data.device3);
                 setFire(res.data.fire);
+                setTemp_hope(res.data.temp_hope);
+                setHum_hope(res.data.hum_hope);
             });
         }, 5000);
         return() =>clearInterval(interval);
-    }, [temperature, huminity, finedust, ufinedust, gas, fire]);
-  
+    }, [temperature, huminity, finedust, ufinedust, gas, device1, device2, device3, device4, device5, device6,fire,temp_hope,hum_hope]);
+
+    const onToggle1 = () => {
+        
+        axios.post('http://192.168.0.55:5000/devices',{
+            '0': !device1,
+            '1': null,
+            '2': null,
+            '3': null,
+            '4': null,
+            '5': null,
+            '6': 103
+        }
+        ).then(function(response){
+            console.log(response);
+        });
+        setDevice1(!device1);
+    };
+    const onToggle2 = () => {
+        
+        axios.post('http://192.168.0.55:5000/devices',{
+            '0': null,
+            '1': !device2,
+            '2': null,
+            '3': null,
+            '4': null,
+            '5': null,
+            '6': 103
+        }
+        ).then(function(response){
+            console.log(response);
+        });
+        setDevice2(!device2);
+    };
+    const onToggle3 = () => {
+        
+        axios.post('http://192.168.0.55:5000/devices',{
+            '0': null,
+            '1': null,
+            '2': !device3,
+            '3': null,
+            '4': null,
+            '5': null,
+            '6': 103
+        }
+        ).then(function(response){
+            console.log(response);
+        });
+        setDevice3(!device3);
+    };
+    const onToggle4 = () => {
+        
+        axios.post('http://192.168.0.55:5000/devices',{
+            '0': null,
+            '1': null,
+            '2': null,
+            '3': !device4,
+            '4': null,
+            '5': null,
+            '6': 103
+        }
+        ).then(function(response){
+            console.log(response);
+        });
+        setDevice4(!device4);
+    };
+    const onToggle5 = () => {
+        
+        axios.post('http://192.168.0.55:5000/devices',{
+            '0': null,
+            '1': null,
+            '2': null,
+            '3': null,
+            '4': !device5,
+            '5': null,
+            '6': 103
+        }
+        ).then(function(response){
+            console.log(response);
+        });
+        setDevice5(!device5);
+    };
+    const onToggle6 = () => {
+        
+        axios.post('http://192.168.0.55:5000/devices',{
+            '0': null,
+            '1': null,
+            '2': null,
+            '3': null,
+            '4': null,
+            '5': !device6,
+            '6': 103
+        }
+        ).then(function(response){
+            console.log(response);
+        });
+        setDevice6(!device6);
+    };
+
     return (
+        <div>
+            <Grid container className={classes.root} spacing={3}>
+                <Grid item xs={10}>
+                <IconButton aria-label="favorite"
+                    className={classes.margin}
+                    onClick={() => onToggle1()}
+                    color={device1 ? "secondary" : "default"}
+                    >
+                    <DevicesIcon fontSize="large" />
+                </IconButton>
+                <IconButton aria-label="favorite"
+                    className={classes.margin}
+                    onClick={() => onToggle2()}
+                    color={device2 ? "secondary" : "default"}
+                    >
+                    <DevicesIcon fontSize="large" />
+                </IconButton>
+                </Grid>
+                <Grid item xs={10}>
+                <IconButton aria-label="favorite"
+                    className={classes.margin}
+                    onClick={() => onToggle3()}
+                    color={device3 ? "secondary" : "default"}
+                    >
+                    <DevicesIcon fontSize="large" />
+                </IconButton>
+                <IconButton aria-label="favorite"
+                    className={classes.margin}
+                    onClick={() => onToggle4()}
+                    color={device4 ? "secondary" : "default"}
+                    >
+                    <DevicesIcon fontSize="large" />
+                </IconButton>
+                </Grid>
+                <Grid item xs={10}>
+                <IconButton aria-label="favorite"
+                    className={classes.margin}
+                    onClick={() => onToggle5()}
+                    color={device5 ? "secondary" : "default"}
+                    >
+                    <DevicesIcon fontSize="large" />
+                </IconButton>
+                <IconButton aria-label="favorite"
+                    className={classes.margin}
+                    onClick={() => onToggle6()}
+                    color={device6 ? "secondary" : "default"}
+                    >
+                    <DevicesIcon fontSize="large" />
+                </IconButton>
+                </Grid>
+            </Grid>
             <Timeline >
                 
-                    <TimelineItem>
+                    <TimelineItem theme={theme}>
                         
                             <TimelineOppositeContent>
                                 <Typography variant="body2" color="textSecondary">
@@ -126,8 +300,8 @@ export default function CustomizedTimeline() {
                         
                         
                             <TimelineSeparator>
-                                <TimelineDot>
-                                    <FastfoodIcon />
+                                <TimelineDot color="secondary" variant="outlined">
+                                    <img src={TempImg} width='25' height='25' />
                                 </TimelineDot>
                                 <TimelineConnector className={classes.secondaryTail} />
                             </TimelineSeparator>
@@ -136,7 +310,7 @@ export default function CustomizedTimeline() {
                             <TimelineContent>
                                 <Paper elevation={3} className={classes.paper}>
                                     <Typography variant="h6" component="h1">
-                                        {temperature}
+                                        {temperature} / {temp_hope}
                                     </Typography>
                                 </Paper>
                             </TimelineContent>
@@ -163,7 +337,7 @@ export default function CustomizedTimeline() {
                             <TimelineContent>
                                 <Paper elevation={3} className={classes.paper}>
                                     <Typography variant="h6" component="h1">
-                                        {huminity}
+                                        {huminity} / {hum_hope}
                                     </Typography>
                                 </Paper>
                             </TimelineContent>
@@ -180,8 +354,8 @@ export default function CustomizedTimeline() {
                         
                         
                             <TimelineSeparator>
-                                <TimelineDot color="primary" variant="outlined">
-                                    <HotelIcon />
+                                <TimelineDot color="secondary" variant="outlined">
+                                    <img src={DustImg} width='25' height='25' />
                                 </TimelineDot>
                                 <TimelineConnector className={classes.secondaryTail} />
                             </TimelineSeparator>
@@ -206,7 +380,7 @@ export default function CustomizedTimeline() {
                             </TimelineOppositeContent>
                         
                             <TimelineSeparator>
-                                <TimelineDot color="secondary">
+                                <TimelineDot color="primary">
                                     <RepeatIcon />
                                 </TimelineDot>
                                 <TimelineConnector className={classes.secondaryTail} />
@@ -231,8 +405,8 @@ export default function CustomizedTimeline() {
                             </TimelineOppositeContent>
                         
                             <TimelineSeparator>
-                                <TimelineDot>
-                                    <FastfoodIcon />
+                                <TimelineDot color="secondary">
+                                    <img src={GasImg} width='25' height='25' />
                                 </TimelineDot>
                                 <TimelineConnector className={classes.secondaryTail} />
                             </TimelineSeparator>
@@ -280,6 +454,6 @@ export default function CustomizedTimeline() {
       </Dialog>
     </div>
             </Timeline>
-
+        </div>
     );
 }
