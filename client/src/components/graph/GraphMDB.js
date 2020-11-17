@@ -51,7 +51,6 @@ function ChartsPage(){
 
     const [dataline, setDataline] = useState({
             labels: ['', '', '', '', ''],
-            scales: {yAxes: [{ticks: {max: 100, min: 0}}]},
             datasets: [
                 {
                     label: "Temperature",
@@ -167,7 +166,7 @@ function ChartsPage(){
                         huminity: res.data.huminity,
                         finedust: res.data.finedust,
                         ufinedust: res.data.ufinedust,
-                        gas: res.data.co2,
+                        gas: res.data.co2/10,
                         time: res.data.time
                     }]
                 );
@@ -285,7 +284,7 @@ function ChartsPage(){
     return(
         <MDBContainer>
             <h2>Test</h2>
-            <Line data={dataline} options={{responsive: true}, {scales:{ yAxes: [{ticks: {max: 100, min: 0}}]}}} />
+            <Line data={dataline} options={{responsive: true}} />
         </MDBContainer>
     );
 }
