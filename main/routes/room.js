@@ -12,7 +12,7 @@ var connection = require('../modules/mysqldb');
   //connect를 중복하게 되어서 handshaking 문제가 발생
 
 router.get('/:roomNum',function(req,res,next){  
-    connection.query(`SELECT * FROM air WHERE time = (SELECT MAX(time) FROM air WHERE room = ${req.params.roomNum})`
+    connection.query(`SELECT * FROM air WHERE time = (SELECT MAX(time) FROM air WHERE room = ${req.params.roomNum}) and room = ${req.params.roomNum}`
     ,function(err,results){
         if(err)
             throw err;
@@ -30,9 +30,12 @@ router.get('/:roomNum',function(req,res,next){
             기기4 : ${results[0].device4}\n
             기기5 : ${results[0].device5}\n
             기기6 : ${results[0].device6}\n
-            화재 : ${results[0].fire}\n`
+            화재 : ${results[0].fire}\n
+            희망 온도 : ${results[0].temp_hope}\n
+            희망 습도 : ${results[0].hum_hope}\n`
             console.log(req.params.roomNum);
             console.log(data);
+            
             res.send(data);
         }
     });
