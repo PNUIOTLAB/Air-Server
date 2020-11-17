@@ -37,15 +37,18 @@ function App() {
   
   return (
     <div className={classes.root}>
-      <Container maxWidth="xs">
+      
+      <Container maxWidth="lg">
         <Information/>
-        <DeviceCritical/>
+        <Container maxWidth="sm">
+          <DeviceCritical/>
+        </Container>
       {/* <Grid container direction="column" justify="center" alignItems="center" >
       </Container>  
       </Grid> */}
-        
+        <ChartsPage/>
       </Container>
-      <ChartsPage/>
+      
     </div>
   );
 }

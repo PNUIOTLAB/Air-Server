@@ -13,13 +13,13 @@ ReactDOM.render(
     <React.StrictMode>
       <Header/>
       <App />
+
       {/* <Request/> */}
-      <Switch>
+      {/* <Switch> */}
         {/* <Route exact path='' component={}/>
         <Route exact path='' component={}/> */}
         {/* <Route exact path='/' component={App}/>  */}
-      
-      </Switch>  
+      {/* </Switch>   */}
       
     </React.StrictMode>
   </BrowserRouter>
