@@ -158,7 +158,7 @@ function ChartsPage(){
 
     useEffect(() => {
         const interval = setInterval(() => {
-            axios.get('http://192.168.0.55:5000/room/102').then(res => {
+            axios.get('http://192.168.0.55:5000/room/103').then(res => {
                 setAir(
                     [air[1], air[2], air[3], air[4],
                     {
