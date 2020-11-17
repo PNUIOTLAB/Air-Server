@@ -9,7 +9,7 @@ router.post('/',function(req,res,next){ //리액트로부터 기기수동제어�
     res.send(req.body);
 
     
-    axios.post('http://192.168.0.73:8080', req.body) //받은 수동제어신호를 Pi에 POST 방식으로 전송
+    axios.post('http://192.168.0.4:8080', req.body) //받은 수동제어신호를 Pi에 POST 방식으로 전송
     .then(function(response){
     console.log(response);
     })

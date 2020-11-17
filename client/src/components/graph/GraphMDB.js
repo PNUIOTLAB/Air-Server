@@ -4,6 +4,9 @@ import {MDBContainer} from 'mdbreact';
 import axios from "axios"
 
 function ChartsPage(){
+    const [room, setRoom] = useState('101');
+
+
     const [air, setAir] = useState([
         {
             temperature: 0,
@@ -158,7 +161,7 @@ function ChartsPage(){
 
     useEffect(() => {
         const interval = setInterval(() => {
-            axios.get('http://192.168.0.55:5000/room/103').then(res => {
+            axios.get(`http://localhost:5000/room/${room}`).then(res => {
                 setAir(
                     [air[1], air[2], air[3], air[4],
                     {
@@ -176,7 +179,7 @@ function ChartsPage(){
                 labels: air.map(air => air.time),
                 datasets:[
                     {
-                        label: "Temperature",
+                        label: "온도",
                         fill: false,
                         lineTension: 0.3,
                         borderColor: "#fa1143",
@@ -195,96 +198,95 @@ function ChartsPage(){
                         pointHitRadius: 10,
                         data: air.map(air => air.temperature)
                     },
-                    {
-                        label: "Huminity",
-                        fill: false,
-                        lineTension: 0.3,
-                        borderColor: "rgb(35, 26, 136)",
-                        borderCapStyle: "butt",
-                        borderDash: [],
-                        borderDashOffset: 0.0,
-                        borderJoinStyle: "miter",
-                        pointBorderColor: "rgb(35, 26, 136)",
-                        pointBackgroundColor: "rgb(255, 255, 255)",
-                        pointBorderWidth: 10,
-                        pointHoverRadius: 5,
-                        pointHoverBackgroundColor: "rgb(0, 0, 0)",
-                        pointHoverBorderColor: "rgba(220, 220, 220, 1)",
-                        pointHoverBorderWidth: 2,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
-                        data: air.map(air => air.huminity)
-                    },
-                    {
-                        label: "Finedust",
-                        fill: false,
-                        lineTension: 0.3,
-                        borderColor: "#61dafb",
-                        borderCapStyle: "butt",
-                        borderDash: [],
-                        borderDashOffset: 0.0,
-                        borderJoinStyle: "miter",
-                        pointBorderColor: "#61dafb",
-                        pointBackgroundColor: "rgb(255, 255, 255)",
-                        pointBorderWidth: 10,
-                        pointHoverRadius: 5,
-                        pointHoverBackgroundColor: "rgb(0, 0, 0)",
-                        pointHoverBorderColor: "rgba(220, 220, 220, 1)",
-                        pointHoverBorderWidth: 2,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
-                        data: air.map(air => air.finedust)
-                    },
-                    {
-                        label: "Ufinedust",
-                        fill: false,
-                        lineTension: 0.3,
-                        borderColor: "#30b34a",
-                        borderCapStyle: "butt",
-                        borderDash: [],
-                        borderDashOffset: 0.0,
-                        borderJoinStyle: "miter",
-                        pointBorderColor: "#30b34a",
-                        pointBackgroundColor: "rgb(255, 255, 255)",
-                        pointBorderWidth: 10,
-                        pointHoverRadius: 5,
-                        pointHoverBackgroundColor: "rgb(0, 0, 0)",
-                        pointHoverBorderColor: "rgba(220, 220, 220,1)",
-                        pointHoverBorderWidth: 2,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
-                        data: air.map(air => air.ufinedust)
-                    },
-                    {
-                        label: "Gas",
-                        fill: false,
-                        lineTension: 0.3,
-                        borderColor: "#fa8211",
-                        borderCapStyle: "butt",
-                        borderDash: [],
-                        borderDashOffset: 0.0,
-                        borderJoinStyle: "miter",
-                        pointBorderColor: "#fa8211",
-                        pointBackgroundColor: "rgb(255, 255, 255)",
-                        pointBorderWidth: 10,
-                        pointHoverRadius: 5,
-                        pointHoverBackgroundColor: "rgb(0, 0, 0)",
-                        pointHoverBorderColor: "rgba(220, 220, 220,1)",
-                        pointHoverBorderWidth: 2,
-                        pointRadius: 1,
-                        pointHitRadius: 10,
-                        data: air.map(air => air.gas)
-                    }
+                    // {
+                    //     label: "습도",
+                    //     fill: false,
+                    //     lineTension: 0.3,
+                    //     borderColor: "rgb(35, 26, 136)",
+                    //     borderCapStyle: "butt",
+                    //     borderDash: [],
+                    //     borderDashOffset: 0.0,
+                    //     borderJoinStyle: "miter",
+                    //     pointBorderColor: "rgb(35, 26, 136)",
+                    //     pointBackgroundColor: "rgb(255, 255, 255)",
+                    //     pointBorderWidth: 10,
+                    //     pointHoverRadius: 5,
+                    //     pointHoverBackgroundColor: "rgb(0, 0, 0)",
+                    //     pointHoverBorderColor: "rgba(220, 220, 220, 1)",
+                    //     pointHoverBorderWidth: 2,
+                    //     pointRadius: 1,
+                    //     pointHitRadius: 10,
+                    //     data: air.map(air => air.huminity)
+                    // },
+                    // {
+                    //     label: "초미세",
+                    //     fill: false,
+                    //     lineTension: 0.3,
+                    //     borderColor: "#61dafb",
+                    //     borderCapStyle: "butt",
+                    //     borderDash: [],
+                    //     borderDashOffset: 0.0,
+                    //     borderJoinStyle: "miter",
+                    //     pointBorderColor: "#61dafb",
+                    //     pointBackgroundColor: "rgb(255, 255, 255)",
+                    //     pointBorderWidth: 10,
+                    //     pointHoverRadius: 5,
+                    //     pointHoverBackgroundColor: "rgb(0, 0, 0)",
+                    //     pointHoverBorderColor: "rgba(220, 220, 220, 1)",
+                    //     pointHoverBorderWidth: 2,
+                    //     pointRadius: 1,
+                    //     pointHitRadius: 10,
+                    //     data: air.map(air => air.finedust)
+                    // },
+                    // {
+                    //     label: "미세",
+                    //     fill: false,
+                    //     lineTension: 0.3,
+                    //     borderColor: "#30b34a",
+                    //     borderCapStyle: "butt",
+                    //     borderDash: [],
+                    //     borderDashOffset: 0.0,
+                    //     borderJoinStyle: "miter",
+                    //     pointBorderColor: "#30b34a",
+                    //     pointBackgroundColor: "rgb(255, 255, 255)",
+                    //     pointBorderWidth: 10,
+                    //     pointHoverRadius: 5,
+                    //     pointHoverBackgroundColor: "rgb(0, 0, 0)",
+                    //     pointHoverBorderColor: "rgba(220, 220, 220,1)",
+                    //     pointHoverBorderWidth: 2,
+                    //     pointRadius: 1,
+                    //     pointHitRadius: 10,
+                    //     data: air.map(air => air.ufinedust)
+                    // },
+                    // {
+                    //     label: "Co2",
+                    //     fill: false,
+                    //     lineTension: 0.3,
+                    //     borderColor: "#fa8211",
+                    //     borderCapStyle: "butt",
+                    //     borderDash: [],
+                    //     borderDashOffset: 0.0,
+                    //     borderJoinStyle: "miter",
+                    //     pointBorderColor: "#fa8211",
+                    //     pointBackgroundColor: "rgb(255, 255, 255)",
+                    //     pointBorderWidth: 10,
+                    //     pointHoverRadius: 5,
+                    //     pointHoverBackgroundColor: "rgb(0, 0, 0)",
+                    //     pointHoverBorderColor: "rgba(220, 220, 220,1)",
+                    //     pointHoverBorderWidth: 2,
+                    //     pointRadius: 1,
+                    //     pointHitRadius: 10,
+                    //     data: air.map(air => air.gas)
+                    // }
                 ]
             });
-        }, 5000);
+        }, 1000);
         return() => clearInterval(interval);
     }, [air, dataline]);
 
     return(
         <MDBContainer>
-            <h2>Test</h2>
-            <Line data={dataline} options={{responsive: true}} />
+            <Line data={dataline} options={{responsive: true, scales:{yAxes:[{ticks:{max:45,min:15}}]}}} />
         </MDBContainer>
     );
 }

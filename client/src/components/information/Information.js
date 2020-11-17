@@ -9,6 +9,7 @@ import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Cloud from '@material-ui/icons/Cloud';
 import axios from "axios"
@@ -26,6 +27,7 @@ import 'fontsource-roboto';
 import TempImg from './image/TemperatureImg.svg';
 import DustImg from './image/Dust.svg';
 import GasImg from './image/Gas.png';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -87,8 +89,9 @@ const theme = createMuiTheme({
 
 export default function CustomizedTimeline() {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
-    
+    const [room, setRoom] = useState('101');
+  
+    const [open, setOpen] = React.useState(false);  
     const [temperature, setTemperature] = useState(0);
     const [huminity, setHuminity] = useState(0);
     const [finedust, setFinedust] = useState(0);
@@ -115,7 +118,7 @@ export default function CustomizedTimeline() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            axios.get('http://192.168.0.55:5000/room/103').then(res => {
+            axios.get(`http://localhost:5000/room/${room}`).then(res => {
                 console.log(res);
                 setTemperature(res.data.temperature);
                 setHuminity(res.data.huminity);
@@ -132,20 +135,20 @@ export default function CustomizedTimeline() {
                 setTemp_hope(res.data.temp_hope);
                 setHum_hope(res.data.hum_hope);
             });
-        }, 5000);
+        }, 1000);
         return() =>clearInterval(interval);
     }, [temperature, huminity, finedust, ufinedust,temp_hope,hum_hope]);
 
     const onToggle1 = () => {
         
-        axios.post('http://192.168.0.55:5000/devices',{
+        axios.post('http://localhost:5000/devices',{
             '0': !device1,
             '1': null,
             '2': null,
             '3': null,
             '4': null,
             '5': null,
-            '6': 103
+            '6': room,
         }
         ).then(function(response){
             console.log(response);
@@ -154,14 +157,14 @@ export default function CustomizedTimeline() {
     };
     const onToggle2 = () => {
         
-        axios.post('http://192.168.0.55:5000/devices',{
+        axios.post('http://localhost:5000/devices',{
             '0': null,
             '1': !device2,
             '2': null,
             '3': null,
             '4': null,
             '5': null,
-            '6': 103
+            '6': room
         }
         ).then(function(response){
             console.log(response);
@@ -170,14 +173,14 @@ export default function CustomizedTimeline() {
     };
     const onToggle3 = () => {
         
-        axios.post('http://192.168.0.55:5000/devices',{
+        axios.post('http://localhost:5000/devices',{
             '0': null,
             '1': null,
             '2': !device3,
             '3': null,
             '4': null,
             '5': null,
-            '6': 103
+            '6': room
         }
         ).then(function(response){
             console.log(response);
@@ -186,14 +189,14 @@ export default function CustomizedTimeline() {
     };
     const onToggle4 = () => {
         
-        axios.post('http://192.168.0.55:5000/devices',{
+        axios.post('http://localhost:5000/devices',{
             '0': null,
             '1': null,
             '2': null,
             '3': !device4,
             '4': null,
             '5': null,
-            '6': 103
+            '6': room
         }
         ).then(function(response){
             console.log(response);
@@ -202,14 +205,14 @@ export default function CustomizedTimeline() {
     };
     const onToggle5 = () => {
         
-        axios.post('http://192.168.0.55:5000/devices',{
+        axios.post('http://localhost:5000/devices',{
             '0': null,
             '1': null,
             '2': null,
             '3': null,
             '4': !device5,
             '5': null,
-            '6': 103
+            '6': room
         }
         ).then(function(response){
             console.log(response);
@@ -218,14 +221,14 @@ export default function CustomizedTimeline() {
     };
     const onToggle6 = () => {
         
-        axios.post('http://192.168.0.55:5000/devices',{
+        axios.post('http://localhost:5000/devices',{
             '0': null,
             '1': null,
             '2': null,
             '3': null,
             '4': null,
             '5': !device6,
-            '6': 103
+            '6': room
         }
         ).then(function(response){
             console.log(response);
@@ -237,54 +240,82 @@ export default function CustomizedTimeline() {
     <div>
        
             
-                <Grid container className={classes.root} direction="row" justify="flex-start" alignItems="center">
-                    <Grid item xs={1}>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <IconButton aria-label="favorite"
-                            className={classes.margin}
-                            onClick={() => onToggle1()}
-                            color={device1 ? "secondary" : "default"}   
+        <Paper elevation={0}>   
+            <Container> 
+                <Grid container 
+                    direction="row"
+                    justify="center"
+                    alignItems="center"
+                    spacing={4}>
+                    <Grid item xs ={4}> 
+                        <Box mb = {2}>       
+                            <Button
+                                variant="contained"
+                                color={device1 ? "secondary" : "default"}
+                                className={classes.button}
+                                startIcon={<DevicesIcon fontSize="large" />}
+                                onClick={() => onToggle1()}
                             >
-                            <DevicesIcon fontSize="large" />
-                        </IconButton>
-                        <IconButton aria-label="favorite"
-                            className={classes.margin}
-                            onClick={() => onToggle2()}
+                                에 어 컨
+                            </Button>
+                        </Box>
+                        <Button
+                            variant="contained"
                             color={device2 ? "secondary" : "default"}
-                            >
-                            <DevicesIcon fontSize="large" />
-                        </IconButton>
-                        <IconButton aria-label="favorite"
-                            className={classes.margin}
-                            onClick={() => onToggle3()}
-                            color={device3 ? "secondary" : "default"}
-                            >
-                            <DevicesIcon fontSize="large" />
-                        </IconButton>
-                        <IconButton aria-label="favorite"
-                            className={classes.margin}
-                            onClick={() => onToggle4()}
-                            color={device4 ? "secondary" : "default"}
-                            >
-                            <DevicesIcon fontSize="large" />
-                        </IconButton>
-                        <IconButton aria-label="favorite"
-                            className={classes.margin}
-                            onClick={() => onToggle5()}
-                            color={device5 ? "secondary" : "default"}
-                            >
-                            <DevicesIcon fontSize="large" />
-                        </IconButton>
-                        <IconButton aria-label="favorite"
-                            className={classes.margin}
-                            onClick={() => onToggle6()}
-                            color={device6 ? "secondary" : "default"}
-                            >
-                            <DevicesIcon fontSize="large" />
-                        </IconButton>
+                            className={classes.button}
+                            startIcon={<DevicesIcon fontSize="large" />}
+                            onClick={() => onToggle2()}
+                        >
+                            보 일 러
+                        </Button>
                     </Grid>
-                    <Grid item xs={8}>
+                    <Grid item xs={4}> 
+                        <Box mb = {2}>
+                            <Button
+                                variant="contained"
+                                color={device3 ? "secondary" : "default"}
+                                className={classes.button}
+                                startIcon={<DevicesIcon fontSize="large" />}
+                                onClick={() => onToggle3()}
+                            >
+                                가 습 기
+                            </Button>
+                        </Box>
+                        <Button
+                            variant="contained"
+                            color={device4 ? "secondary" : "default"}
+                            className={classes.button}
+                            startIcon={<DevicesIcon fontSize="large" />}
+                            onClick={() => onToggle4()}
+                        >
+                            제 습 기
+                        </Button>
+                    </Grid>
+                    <Grid item xs ={4}> 
+                        <Box mb = {2}>
+                            <Button
+                                variant="contained"
+                                color={device5 ? "secondary" : "default"}
+                                className={classes.button}
+                                startIcon={<DevicesIcon fontSize="large" />}
+                                onClick={() => onToggle5()}
+                            >
+                                환 풍 기 
+                            </Button>
+                        </Box>
+                        <Button
+                            variant="contained"
+                            color={device6 ? "secondary" : "default"}
+                            className={classes.button}
+                            startIcon={<DevicesIcon fontSize="large" />}
+                            onClick={() => onToggle6()}
+                        >
+                            공기청정기
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Container>
+        </Paper>
                         <Timeline >
                         
                             <TimelineItem theme={theme}>
@@ -307,7 +338,7 @@ export default function CustomizedTimeline() {
                                     <TimelineContent>
                                         <Paper elevation={3} className={classes.paper}>
                                             <Typography variant="h6" component="h1">
-                                                {temperature} / {temp_hope}
+                                                {temperature} 
                                             </Typography>
                                         </Paper>
                                     </TimelineContent>
@@ -334,7 +365,7 @@ export default function CustomizedTimeline() {
                                     <TimelineContent>
                                         <Paper elevation={3} className={classes.paper}>
                                             <Typography variant="h6" component="h1">
-                                                {huminity} / {hum_hope}
+                                                {huminity} 
                                             </Typography>
                                         </Paper>
                                     </TimelineContent>
@@ -419,8 +450,7 @@ export default function CustomizedTimeline() {
                             </TimelineItem>
                             
                         </Timeline>
-                    </Grid>
-                </Grid>
+                  
             
       {/*<Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Open alert dialog 안쓰는거

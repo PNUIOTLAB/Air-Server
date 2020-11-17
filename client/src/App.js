@@ -28,27 +28,23 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
-  const [Temp,setTemp] = useState(0);
-  const [Data, loading, error] = useRequest(
-    'get','http://192.168.0.55:5000/room/101',function(){console.log("complete")}
-  );
   
-  const {temperature, huminity} = Data===null? {temperature : 0, huminity : 0}:Data
   
   return (
     <div className={classes.root}>
       
-      <Container maxWidth="lg">
+      <Container maxWidth="sm">
         <Information/>
-        <Container maxWidth="sm">
-          <DeviceCritical/>
-        </Container>
+        <DeviceCritical/>
       {/* <Grid container direction="column" justify="center" alignItems="center" >
       </Container>  
       </Grid> */}
-        <ChartsPage/>
+        
+      {/* </Container>
+      <Container maxWidth="lg"> */}
+        
       </Container>
-      
+      <ChartsPage/>
     </div>
   );
 }
