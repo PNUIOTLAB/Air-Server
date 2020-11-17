@@ -128,9 +128,9 @@ export default function CustomizedTimeline() {
                 setDevice1(res.data.device1); // device1 ? on : off 
                 setDevice2(res.data.device2);
                 setDevice3(res.data.device3);
-                setDevice4(res.data.device3);
-                setDevice5(res.data.device3);
-                setDevice6(res.data.device3);
+                setDevice4(res.data.device4);
+                setDevice5(res.data.device5);
+                setDevice6(res.data.device6);
                 setFire(res.data.fire);
                 setTemp_hope(res.data.temp_hope);
                 setHum_hope(res.data.hum_hope);
@@ -425,7 +425,7 @@ export default function CustomizedTimeline() {
         Open alert dialog 안쓰는거
     </Button>*/}
       <Dialog
-        open={!fire} // 이것만 포함시키면 화재 경보는 Fire가 0이 들어올때까지 절대 안꺼짐. open={fire}
+        open={fire} // 이것만 포함시키면 화재 경보는 Fire가 0이 들어올때까지 절대 안꺼짐. open={fire}
         onClose={handleClose} //이걸 포함시키면 화재 경보가 꺼지긴 하는데 신호를 받으면 다시 켜짐.
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"

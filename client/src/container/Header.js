@@ -150,7 +150,6 @@ export default function Header() {
         })}
       >
         <div className={classes.drawerHeader} />
-           <CustomizedTimeline />
         {/* 여기에 다른 것들을 넣는다 */}
       </main>
     </div>
