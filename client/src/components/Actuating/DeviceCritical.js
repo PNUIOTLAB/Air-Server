@@ -76,7 +76,7 @@ export default function CustomizedSlider() {
   const classes = useStyles();
   const [temperature, setTemperature] = useState(25);
   const [huminity, setHuminity] = useState(40);
-  const [room, setRoom] = useState('103');
+  const [room, setRoom] = useState('101');
 
   const CriticalTemperature = (event, newValue) => {
   /*const [value, setValue] = React.useState(30);

@@ -104,6 +104,10 @@ export default function CustomizedTimeline() {
     const [device4, setDevice4] = useState(false);
     const [device5, setDevice5] = useState(false);
     const [device6, setDevice6] = useState(false);
+    // const [time1, setTime1] = useState(0);
+
+    // var D = new Date();
+    
     const [temp_hope, setTemp_hope] = useState(25);
     const [hum_hope, setHum_hope] = useState(40);
 
@@ -120,11 +124,20 @@ export default function CustomizedTimeline() {
         const interval = setInterval(() => {
             axios.get(`http://localhost:5000/room/${room}`).then(res => {
                 console.log(res);
+                
                 setTemperature(res.data.temperature);
                 setHuminity(res.data.huminity);
                 setFinedust(res.data.finedust);
                 setUfinedust(res.data.ufinedust);
                 setGas(res.data.co2);
+                // console.log(D.getTime());
+                // console.log(time1);
+                // if(D.getTime()-time1>=3000){
+                //     console.log("overtime");
+                //     setDevice1(res.data.device1);
+                //     setTime1(0);
+                // }
+                // else{console.log("discard")}
                 setDevice1(res.data.device1); // device1 ? on : off 
                 setDevice2(res.data.device2);
                 setDevice3(res.data.device3);
@@ -153,7 +166,10 @@ export default function CustomizedTimeline() {
         ).then(function(response){
             console.log(response);
         });
-        setDevice1(!device1);
+        
+        // setTime1(D.getTime());
+        // console.log("time1 ",time1)
+        // setDevice1(!device1);
     };
     const onToggle2 = () => {
         
@@ -169,7 +185,7 @@ export default function CustomizedTimeline() {
         ).then(function(response){
             console.log(response);
         });
-        setDevice2(!device2);
+        // setDevice2(!device2);
     };
     const onToggle3 = () => {
         
@@ -185,7 +201,7 @@ export default function CustomizedTimeline() {
         ).then(function(response){
             console.log(response);
         });
-        setDevice3(!device3);
+        // setDevice3(!device3);
     };
     const onToggle4 = () => {
         
@@ -201,7 +217,7 @@ export default function CustomizedTimeline() {
         ).then(function(response){
             console.log(response);
         });
-        setDevice4(!device4);
+        // setDevice4(!device4);
     };
     const onToggle5 = () => {
         
@@ -217,7 +233,7 @@ export default function CustomizedTimeline() {
         ).then(function(response){
             console.log(response);
         });
-        setDevice5(!device5);
+        // setDevice5(!device5);
     };
     const onToggle6 = () => {
         
@@ -233,7 +249,7 @@ export default function CustomizedTimeline() {
         ).then(function(response){
             console.log(response);
         });
-        setDevice6(!device6);
+        // setDevice6(!device6);
     };
 
     return (

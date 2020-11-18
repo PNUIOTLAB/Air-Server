@@ -197,7 +197,7 @@ function ChartsPage(){
                         pointRadius: 1,
                         pointHitRadius: 10,
                         data: air.map(air => air.temperature)
-                    },
+                    }
                     // {
                     //     label: "습도",
                     //     fill: false,
@@ -286,9 +286,9 @@ function ChartsPage(){
 
     return(
         <MDBContainer>
-            <Line data={dataline} options={{responsive: true, scales:{yAxes:[{ticks:{max:45,min:15}}]}}} />
+            <Line data={dataline} options={{responsive: true  ,scales:{yAxes:[{ticks:{max:50,min:15}}]} }} />
         </MDBContainer>
     );
 }
-
+//scales:{yAxes:[{ticks:{max:70,min:30}}]}
 export default ChartsPage;
