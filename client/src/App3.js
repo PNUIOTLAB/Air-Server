@@ -4,11 +4,12 @@ import './App.css';
 import { Container } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import DeviceCritical from './components/Actuating/DeviceCritical';
-import Information from './components/information/Information';
-import ChartsPage from './components/graph/GraphMDB';
+import DeviceCritical3 from './components/Actuating/DeviceCritical3';
+import Information3 from './components/information/Information3';
+import ChartsPage3 from './components/graph/GraphMDB3'
 import {withRouter} from 'react-router-dom';
 import Header from './container/Header';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -23,26 +24,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App() {
+function App3() {
   const classes = useStyles();
-  
   
   return (
     <div className={classes.root}>
-      <Header/>
+     <Header/>
       <Container maxWidth="md">
-        <Information/>       
+        <Information3/>       
       </Container>
       <Container maxWidth="sm">
-        <DeviceCritical/> 
+        <DeviceCritical3/> 
       </Container>
       <Container maxWidth="xl">
-        <ChartsPage/>
+        <ChartsPage3/>
       </Container>
+      
     </div>
   );
 }
 
-export default withRouter(App);
+export default withRouter(App3);
 
 

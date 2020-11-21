@@ -87,11 +87,9 @@ const theme = createMuiTheme({
     }
 })
 
-export default function CustomizedTimeline() {
+export default function CustomizedTimeline2() {
     const classes = useStyles();
-    const temp_char = '&#176';
-
-    const [room, setRoom] = useState('101');
+    const [room, setRoom] = useState('102');
   
     const [open, setOpen] = React.useState(false);  
     const [temperature, setTemperature] = useState(0);
@@ -258,7 +256,7 @@ export default function CustomizedTimeline() {
     <div>
        
             
-        <Grid container
+       <Grid container
             direction = "row"
             justify="center"
             alignItems="center"
@@ -367,7 +365,7 @@ export default function CustomizedTimeline() {
                                     <TimelineContent>
                                         <Paper elevation={3} className={classes.paper}>
                                             <Typography variant="h6" component="h1">
-                                                {temperature}&nbsp;{String.fromCharCode(176)}C
+                                                {temperature}&nbsp;{String.fromCharCode(176)}C 
                                             </Typography>
                                         </Paper>
                                     </TimelineContent>
@@ -394,7 +392,7 @@ export default function CustomizedTimeline() {
                                     <TimelineContent>
                                         <Paper elevation={3} className={classes.paper}>
                                             <Typography variant="h6" component="h1">
-                                                {huminity}&nbsp;%
+                                                {huminity}&nbsp;% 
                                             </Typography>
                                         </Paper>
                                     </TimelineContent>

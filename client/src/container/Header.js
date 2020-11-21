@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -19,6 +19,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import HomeIcon from '@material-ui/icons/Home';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import {withRouter,useHistory} from 'react-router-dom';
 // import CustomizedTimeline from '../components/information/Information';
 
 const drawerWidth = 240;
@@ -80,11 +81,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+function Header(props) {
+  
+  const history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const [room, setRoom] = React.useState('0');
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -92,6 +95,11 @@ export default function Header() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  useEffect(()=>{
+    console.log(props)
+    setRoom(props.location.pathname.substr(1,3) );
+  },[])
 
   return (
     <div className={classes.root}>
@@ -113,7 +121,7 @@ export default function Header() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            SMART AIR
+            SMART AIR  - {room}
           </Typography>
           <IconButton aria-label="show 17 new notifications" color="inherit">
             <NotificationsIcon />
@@ -136,8 +144,8 @@ export default function Header() {
         </div>
         <Divider />
         <List>
-          {['ROOM1', 'ROOM2', 'ROOM3'].map((text, index) => (
-            <ListItem button key={text}>
+          {['101', '102', '103'].map((text, index) => (
+            <ListItem button key={text} onClick={()=>{history.push(`/${text}`)}}>
               <ListItemIcon><HomeIcon/></ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
@@ -155,7 +163,7 @@ export default function Header() {
     </div>
   );
 }
-
+export default withRouter(Header);
 
 // //////////////////////////////////////////////////////
 

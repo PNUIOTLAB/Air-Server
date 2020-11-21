@@ -2,27 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import App2 from './App2';
+import App3 from './App3';
 import Header from './container/Header'
 import useRequest from './hook/useRequest'
 import reportWebVitals from './reportWebVitals';
 import Request from './components/Request'
-import { BrowserRouter , Switch, Route, Redirect,Router } from 'react-router-dom';
+import { BrowserRouter as Router , Switch, Route, Redirect } from 'react-router-dom';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <React.StrictMode>
-      <Header/>
-      <App />
-
-      {/* <Request/> */}
-      {/* <Switch> */}
-        {/* <Route exact path='' component={}/>
-        <Route exact path='' component={}/> */}
-        {/* <Route exact path='/' component={App}/>  */}
-      {/* </Switch>   */}
-      
-    </React.StrictMode>
-  </BrowserRouter>
+  // <BrowserRouter>
+    // <React.StrictMode>
+    <Router>
+      <Switch>
+        <Route path="/101" component={App}/>
+        <Route path="/102" component={App2}/>
+        <Route path="/103" component={App3}/>
+      </Switch>
+    </Router>
+    // </React.StrictMode>
+  // </BrowserRouter>
   ,
   document.getElementById('root')
 );
