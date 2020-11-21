@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App() {
+function App3() {
   const classes = useStyles();
   
   return (
@@ -40,6 +40,6 @@ function App() {
   );
 }
 
-export default App;
+export default App3;
 
 

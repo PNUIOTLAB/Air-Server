@@ -85,7 +85,7 @@ const theme = createMuiTheme({
     }
 })
 
-export default function CustomizedTimeline() {
+export default function CustomizedTimeline3() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     
@@ -115,7 +115,7 @@ export default function CustomizedTimeline() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            axios.get('http://192.168.0.6:5000/room/101').then(res => {
+            axios.get('http://192.168.0.6:5000/room/103').then(res => {
                 console.log(res);
                 setTemperature(res.data.temperature);
                 setHuminity(res.data.huminity);
