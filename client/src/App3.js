@@ -4,9 +4,11 @@ import './App.css';
 import { Container } from '@material-ui/core';
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import DeviceCritical from './components/Actuating/DeviceCritical';
-import Information from './components/information/Information';
-import ChartsPage from './components/graph/GraphMDB'
+import DeviceCritical3 from './components/Actuating/DeviceCritical3';
+import Information3 from './components/information/Information3';
+import ChartsPage3 from './components/graph/GraphMDB3'
+import {withRouter} from 'react-router-dom';
+import Header from './container/Header';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,19 +29,21 @@ function App3() {
   
   return (
     <div className={classes.root}>
-      
-      <Container maxWidth="lg">
-        <Information/>
-        <Container maxWidth="sm">
-          <DeviceCritical/>
-        </Container>
-        <ChartsPage/>
+     <Header/>
+      <Container maxWidth="md">
+        <Information3/>       
+      </Container>
+      <Container maxWidth="sm">
+        <DeviceCritical3/> 
+      </Container>
+      <Container maxWidth="xl">
+        <ChartsPage3/>
       </Container>
       
     </div>
   );
 }
 
-export default App3;
+export default withRouter(App3);
 
 

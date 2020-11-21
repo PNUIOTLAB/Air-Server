@@ -27,9 +27,9 @@ server.on('message',function(msg,info){
   
   // 수신받은 문자열을 ,으로 파싱
   var list = data.split(',');
-  var sql = `INSERT INTO air (temperature,huminity,finedust,ufinedust,co2,room,device1,device2,device3,device4,device5,device6,fire,time) 
-  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
-  params = [list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9],list[10],list[11],list[12],list[13]];
+  var sql = `INSERT INTO air (temperature,huminity,finedust,ufinedust,co2,room,device1,device2,device3,device4,device5,device6,fire,time,temp_hope,hum_hope) 
+  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  params = [list[0],list[1],list[2],list[3],list[4],list[5],list[6],list[7],list[8],list[9],list[10],list[11],list[12],list[13],list[14],list[15]];
 
 
   connection.query(sql,params,function(err,rows,fields){

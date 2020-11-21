@@ -8,19 +8,20 @@ import Header from './container/Header'
 import useRequest from './hook/useRequest'
 import reportWebVitals from './reportWebVitals';
 import Request from './components/Request'
-import { BrowserRouter , Switch, Route, Redirect,Router } from 'react-router-dom';
+import { BrowserRouter as Router , Switch, Route, Redirect } from 'react-router-dom';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <React.StrictMode>
-      <Header/>
-      <Router>
+  // <BrowserRouter>
+    // <React.StrictMode>
+    <Router>
+      <Switch>
         <Route path="/101" component={App}/>
         <Route path="/102" component={App2}/>
         <Route path="/103" component={App3}/>
-      </Router>
-    </React.StrictMode>
-  </BrowserRouter>
+      </Switch>
+    </Router>
+    // </React.StrictMode>
+  // </BrowserRouter>
   ,
   document.getElementById('root')
 );

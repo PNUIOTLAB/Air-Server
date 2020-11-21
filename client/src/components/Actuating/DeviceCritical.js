@@ -76,6 +76,7 @@ export default function CustomizedSlider() {
   const classes = useStyles();
   const [temperature, setTemperature] = useState(25);
   const [huminity, setHuminity] = useState(40);
+  const [room, setRoom] = useState('101');
 
   const CriticalTemperature = (event, newValue) => {
   /*const [value, setValue] = React.useState(30);
@@ -83,7 +84,7 @@ export default function CustomizedSlider() {
   console.log(newValue);
   console.log(typeof(newValue));
   setTemperature(newValue);
-  axios.post('http://192.168.0.55:5000/devices',{'0': newValue, '1': 0}) // 온도를 바꾸면 실행되면서 전달
+  axios.post('http://localhost:5000/devices',{'0': newValue, '1': 0}) // 온도를 바꾸면 실행되면서 전달
   .then(function(response){
     console.log(response);
   })
@@ -98,7 +99,7 @@ const CriticalHumidity = (event, newValue) => {
     console.log(newValue);
     console.log(typeof(newValue));
     setHuminity(newValue);
-    axios.post('http://192.168.0.55:5000/devices',{'0': 0,'1': newValue}) // 습도를 바꾸면 실행되면서 전달
+    axios.post('http://localhost:5000/devices',{'0': 0,'1': newValue}) // 습도를 바꾸면 실행되면서 전달
     .then(function(response){
       console.log(response);
     })

@@ -278,13 +278,13 @@ function ChartsPage(){
                     }
                 ]
             });
-        }, 5000);
+        }, 1000);
         return() => clearInterval(interval);
     }, [air, dataline]);
 
     return(
         <MDBContainer>
-            <h2>Test</h2>
+            <h2>GRAPH</h2>
             <Line data={dataline} options={{responsive: true}, {scales:{ yAxes: [{ticks: {max: 100, min: 0}}]}}} />
         </MDBContainer>
     );

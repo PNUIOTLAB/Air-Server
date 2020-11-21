@@ -6,8 +6,9 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import DeviceCritical from './components/Actuating/DeviceCritical';
 import Information from './components/information/Information';
-import ChartsPage from './components/graph/GraphMDB'
-
+import ChartsPage from './components/graph/GraphMDB';
+import {withRouter} from 'react-router-dom';
+import Header from './container/Header';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -25,21 +26,23 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
   
+  
   return (
     <div className={classes.root}>
-      
-      <Container maxWidth="lg">
-        <Information/>
-        <Container maxWidth="sm">
-          <DeviceCritical/>
-        </Container>
+      <Header/>
+      <Container maxWidth="md">
+        <Information/>       
+      </Container>
+      <Container maxWidth="sm">
+        <DeviceCritical/> 
+      </Container>
+      <Container maxWidth="xl">
         <ChartsPage/>
       </Container>
-      
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
 
 
