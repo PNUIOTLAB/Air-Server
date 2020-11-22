@@ -253,7 +253,7 @@ function ChartsPage(){
    
 
     const [dataline, setDataline] = useState({
-            labels: ['', '', '', '', ''],
+            labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
             datasets: [
                 {
                     label: "Temperature",
@@ -363,7 +363,12 @@ function ChartsPage(){
         const interval = setInterval(() => {
             axios.get(`http://localhost:5000/room/${room}`).then(res => {
                 setAir(
-                    [air[1], air[2], air[3], air[4],
+                    [air[1], air[2], air[3], air[4], air[5],
+                    air[6], air[7], air[8], air[9], air[10],
+                    air[11], air[12], air[13], air[14], air[15],
+                    air[16], air[17], air[18], air[19], air[20],
+                    air[21], air[22], air[23], air[24], air[25],
+                    air[26], air[27], air[28], air[29],
                     {
                         temperature: res.data.temperature,
                         huminity: res.data.huminity,
