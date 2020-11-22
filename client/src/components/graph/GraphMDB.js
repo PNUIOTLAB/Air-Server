@@ -47,7 +47,207 @@ function ChartsPage(){
             ufinedust: 0,
             gas: 0,
             time: ''
-        }
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
+        {
+            temperature: 0,
+            huminity: 0,
+            finedust: 0,
+            ufinedust: 0,
+            gas: 0,
+            time: ''
+        },
     ]);
 
    
